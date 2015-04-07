@@ -4,6 +4,7 @@ filetype plugin indent on
 set nocompatible   " Disable vi-compatibility
 set laststatus=2   " Always show the statusline
 let g:Powerline_symbols = 'fancy'
+highlight clear SignColumn
 
 :nmap \l :setlocal number!<CR>
 :nmap \o :set paste!<CR>
