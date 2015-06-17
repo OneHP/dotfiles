@@ -82,15 +82,19 @@ alias gcl='git clean -f'
 alias gst='git stash'
 alias gstp='git stash pop'
 alias gstl='git stash list'
+alias gip='git update-index --assume-unchanged src/main/resources/application.properties'
+alias gipu='git update-index --no-assume-unchanged src/main/resources/application.properties'
 
 alias ws='cd ~/workspace'
 
 alias mvnce='mvn -U clean eclipse:eclipse -DdownloadSources=true'
 alias mvnct='mvn clean test'
+alias mvncr='mvn clean spring-boot:run'
 
 alias srv='python -m SimpleHTTPServer'
 
 export GIT_EDITOR=vim
+export SCALA_HOME='/usr/local/opt/scala/idea'
 
 # Customize to your needs...
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
