@@ -1,5 +1,15 @@
 [user]
-        name = onehp
-        email = onehitpoint@googlemail.com
+	name = Thomas Inman
+	email = thomas.inman@autotrader.co.uk
 [push]
         default = simple
+[core]
+	excludesfile = /Users/thomas.inman/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[url "https://"]
+	insteadOf = git://
