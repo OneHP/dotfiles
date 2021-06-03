@@ -7,10 +7,6 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="dieter"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -42,15 +38,17 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 bindkey -v
 
-function zle-line-init zle-keymap-select {
-    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-        RPS2=$RPS1
-            zle reset-prompt
-    }
-zle -N zle-line-init
-zle -N zle-keymap-select
+# function zle-line-init zle-keymap-select {
+#     RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+#         RPS2=$RPS1
+#             zle reset-prompt
+#     }
+# zle -N zle-line-init
+# zle -N zle-keymap-select
 
 alias hist='cut -f1 -d" " ~/.bash_history | sort | uniq -c | sort -nr | head -n 30'
+
+alias hy='history'
 
 # Default to human readable figures
 alias df='df -h'
@@ -61,7 +59,7 @@ alias fgrep='fgrep --color=auto'              # show differences in colour
 # Some shortcuts for different directory listings
 alias ll='ls -l'                              # long list
 alias la='ls -A'                              # all but . and ..
-alias lla='ls -la'
+alias lla='ls -lah'
 # Git aliases
 alias gc='git commit'
 alias gs='git status -s'
@@ -87,18 +85,63 @@ alias gipu='git update-index --no-assume-unchanged src/main/resources/applicatio
 
 alias ws='cd ~/workspace'
 
+#alias mvn='tools/maven/bin/mvn'
+
 alias mvnce='mvn -U clean eclipse:eclipse -DdownloadSources=true'
 alias mvnct='mvn clean test'
 alias mvncr='mvn clean spring-boot:run'
+
+alias grct='./gradlew clean test'
 
 alias srv='python -m SimpleHTTPServer'
 
 export GIT_EDITOR=vim
 export SCALA_HOME='/usr/local/opt/scala/idea'
+export PHANTOMJS_BIN='/usr/local/bin/phantomjs'
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$JAVA_HOME/jre/bin:$PATH
 
 # Customize to your needs...
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+export PATH=/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin
 export PATH=/usr/local/share/npm/lib/node_modules/coffee-script/bin/:$PATH
 
-alias h='heroku'
-alias hn='/usr/local/share/python/pyhn'
+# export HTTP_PROXY=$http_proxy
+# export https_proxy=$http_proxy
+# export HTTPS_PROXY=$http_proxy
+# export ftp_proxy=$http_proxy
+export no_proxy=localhost
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
+# Lines added by shippr-cli installer
+if [ $commands[shippr] ]; then
+  source <(shippr completion zsh)
+fi
+# End of lines added by shippr-cli installer
+#
+
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/libpq/lib"
+export CPPFLAGS="-I/usr/local/opt/libpq/include"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/thomas.inman/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/thomas.inman/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/thomas.inman/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/thomas.inman/google-cloud-sdk/completion.zsh.inc'; fi
+
+alias authgc="gcloud auth login;gcloud auth application-default login"
+alias pgpprod="shippr project proxy postgres -e prod"
+alias pgppre="shippr project proxy postgres -e preprod"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/thomas.inman/.sdkman"
+[[ -s "/Users/thomas.inman/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/thomas.inman/.sdkman/bin/sdkman-init.sh"
