@@ -141,6 +141,7 @@ if [ -f '/Users/thomas.inman/google-cloud-sdk/completion.zsh.inc' ]; then . '/Us
 alias authgc="gcloud auth login;gcloud auth application-default login"
 alias pgpprod="shippr project proxy postgres -e prod"
 alias pgppre="shippr project proxy postgres -e preprod"
+alias shdep="shippr project check-dependencies"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/thomas.inman/.sdkman"

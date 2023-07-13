@@ -13,3 +13,5 @@
 	trustExitCode = true
 [url "https://"]
 	insteadOf = git://
+[pull]
+	ff = only
